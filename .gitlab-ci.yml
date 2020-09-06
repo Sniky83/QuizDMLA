@@ -1,0 +1,13 @@
+# Select image from https://hub.docker.com/_/php
+image: php:7.2
+
+variables:
+  GIT_SSL_NO_VERIFY: "1"
+
+before_script:
+# Install dependencies
+- bash ci/docker_install.sh > /dev/null
+
+test:app:
+  script:
+  - phpunit --configuration phpunit_conf.xml
